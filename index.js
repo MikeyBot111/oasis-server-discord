@@ -39,13 +39,16 @@ function UpdateChannels(map, plr, plrm, address) {
 
 const interval = setInterval(async function () {
     try {
+        console.log("Refresh...")
         const server = await Server({
             ip: process.env.PRIV_IP,
             port: parseInt(process.env.PRIV_PORT, 10),
             timeout: 3000,
         });
         const info = await server.getInfo();
+        console.log("Refresh...R")
         UpdateChannels(info.map, info.players.online, info.players.max, info.address)
+        console.log("Refresh...OK")
     } catch {
         console.log("Timeout")
     }
